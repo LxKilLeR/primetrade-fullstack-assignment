@@ -92,64 +92,41 @@ frontend/
 - `limit` - number of records per page
 - `status` - filter by `pending`, `in-progress`, or `completed`
 
-## API Testing Examples
+## Demo Accounts
 
-### Register
+### User Account
 
-```bash
-curl -X POST http://localhost:5000/api/v1/auth/register \
-  -H "Content-Type: application/json" \
-  -d '{"name":"Jane Doe","email":"jane@example.com","password":"secret123"}'
-```
+Email:
+[leboli8343@ifcoat.com](mailto:leboli8343@ifcoat.com)
 
-### Login
+Password:
+asdfghjkl
 
-```bash
-curl -X POST http://localhost:5000/api/v1/auth/login \
-  -H "Content-Type: application/json" \
-  -d '{"email":"jane@example.com","password":"secret123"}'
-```
+---
 
-### Postman Examples
+### Admin Account
 
-#### Register User
+Email:
+[wehadi4047@matkind.com](mailto:wehadi4047@matkind.com)
 
-`POST http://localhost:5000/api/v1/auth/register`
+Password:
+qwertyuiop
 
-```json
-{
-  "name": "Jane Doe",
-  "email": "jane@example.com",
-  "password": "secret123"
-}
-```
+---
 
-#### Login
+## Role Access
 
-`POST http://localhost:5000/api/v1/auth/login`
+### User
 
-```json
-{
-  "email": "jane@example.com",
-  "password": "secret123"
-}
-```
+* Can create tasks
+* Can only access their own tasks
+* Can update/delete their own tasks
 
-### Create Task
+### Admin
 
-```bash
-curl -X POST http://localhost:5000/api/v1/tasks \
-  -H "Authorization: Bearer YOUR_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{"title":"Prepare report","description":"Draft weekly report","status":"pending"}'
-```
-
-### List Tasks
-
-```bash
-curl "http://localhost:5000/api/v1/tasks?page=1&limit=10&status=pending" \
-  -H "Authorization: Bearer YOUR_TOKEN"
-```
+* Can access all users' tasks
+* Can manage all tasks
+* Has admin-level permissions
 
 ## Deployment
 
