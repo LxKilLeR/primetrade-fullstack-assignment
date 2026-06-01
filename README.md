@@ -1,6 +1,16 @@
 # Internship Assignment Project
 
-A production-ready internship assignment project with a Node.js/Express backend, MongoDB/Mongoose data layer, JWT authentication, role-based access control, and a React/Vite frontend dashboard.
+A full-stack internship assignment project featuring JWT authentication, role-based access control, MongoDB Atlas integration, protected APIs, and a responsive React dashboard.
+
+## Live Demo
+
+### Frontend
+
+https://primetrade-fullstack-assignment-frontend-p2n7e0888.vercel.app
+
+### Backend API
+
+https://primetrade-fullstack-assignment.onrender.com
 
 ## Project Structure
 
@@ -56,7 +66,7 @@ frontend/
 - `MONGODB_URI` - MongoDB connection string
 - `JWT_SECRET` - secret used to sign tokens
 - `JWT_EXPIRES_IN` - token lifetime, for example `7d`
-- `CLIENT_URL` - frontend origin for CORS, for example `http://localhost:5173`
+- `CLIENT_URL` - frontend origin for CORS, for example `https://primetrade-fullstack-assignment-frontend-p2n7e0888.vercel.app`
 - `NODE_ENV` - environment name
 
 ## Frontend Setup
@@ -68,7 +78,7 @@ frontend/
 
 ### Environment Variables
 
-- `VITE_API_BASE_URL` - backend API URL, for example `http://localhost:5000/api/v1`
+- `VITE_API_BASE_URL` - backend API URL, for example `https://primetrade-fullstack-assignment.onrender.com/api/v1`
 
 ## API Routes
 
@@ -91,6 +101,36 @@ frontend/
 - `page` - pagination page number
 - `limit` - number of records per page
 - `status` - filter by `pending`, `in-progress`, or `completed`
+
+## Deployment
+
+### Render Backend
+
+- Use the backend folder as the service root.
+- Set build command to `npm install`.
+- Set start command to `npm start`.
+- Add environment variables from `backend/.env.example`.
+- Point `MONGODB_URI` to MongoDB Atlas or another managed MongoDB instance.
+- Set `CLIENT_URL` to the deployed frontend URL (e.g., `https://primetrade-fullstack-assignment-frontend-p2n7e0888.vercel.app`).
+
+### Vercel Frontend
+
+- Use the frontend folder as the project root.
+- Set `VITE_API_BASE_URL` to the deployed backend API: `https://primetrade-fullstack-assignment.onrender.com/api/v1`.
+- Deploy as a static Vite app.
+
+## Scalability Notes
+
+- The backend is split into config, controllers, middleware, models, routes, utils, and validations for maintainability.
+- Authentication and authorization are separated into reusable middleware.
+- Task access checks are centralized so admin and ownership rules stay consistent.
+- Pagination and filtering keep list endpoints efficient as data grows.
+- Error handling is centralized for consistent API responses.
+
+## Notes
+
+- Admin accounts should be seeded or created through a controlled internal process.
+- Users can only update or delete tasks they own, while admins can access all tasks.
 
 ## Demo Accounts
 
@@ -126,34 +166,5 @@ qwertyuiop
 
 * Can access all users' tasks
 * Can manage all tasks
-* Has admin-level permissions
+* Has admin-level access
 
-## Deployment
-
-### Render Backend
-
-- Use the backend folder as the service root.
-- Set build command to `npm install`.
-- Set start command to `npm start`.
-- Add environment variables from `backend/.env.example`.
-- Point `MONGODB_URI` to MongoDB Atlas or another managed MongoDB instance.
-- Set `CLIENT_URL` to the deployed frontend URL.
-
-### Vercel Frontend
-
-- Use the frontend folder as the project root.
-- Set `VITE_API_BASE_URL` to the deployed backend API, for example `https://your-api.onrender.com/api/v1`.
-- Deploy as a static Vite app.
-
-## Scalability Notes
-
-- The backend is split into config, controllers, middleware, models, routes, utils, and validations for maintainability.
-- Authentication and authorization are separated into reusable middleware.
-- Task access checks are centralized so admin and ownership rules stay consistent.
-- Pagination and filtering keep list endpoints efficient as data grows.
-- Error handling is centralized for consistent API responses.
-
-## Notes
-
-- Admin accounts should be seeded or created through a controlled internal process.
-- Users can only update or delete tasks they own, while admins can access all tasks.
